@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @FeignClient(
     name="account",
@@ -35,6 +36,11 @@ public interface AccountController {
     @GetMapping("/accounts/{id}")
     public ResponseEntity<AccountOut> findById(
         @PathVariable String id
+    );
+
+    @PostMapping("/accounts/login")
+    public ResponseEntity<AccountOut> login(
+        @RequestBody AccountIn in
     );
     
 }
